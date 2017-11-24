@@ -6,7 +6,8 @@
 ## Functions
 函数capwords()将字符串中的所有英文单词首字母转换成大写。</br>
 [string_capwords.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string_src/string_capwords.py)
-<pre><code>import string
+<pre><code># string_capwords.py
+import string
 
 s = "人生苦短, we use pytHon."
 print(s)
@@ -20,7 +21,8 @@ print(string.capwords(s))</code></pre>
 ## Templates
 在[PEP 292](https://www.python.org/dev/peps/pep-0292/)中添加了字符串模板，作为内置插值语法的替代品。使用字符串模板插值，变量用$(例如$ var)前缀来标识。或置于大括号内(例如 ${var})。</br>
 [string_template.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string_src/string_template.py)
-<pre><code>import string
+<pre><code># string_template.py
+import string
 
 values = {"var": "foo"}
 
@@ -63,7 +65,8 @@ Variable in text : fooiable</code></pre>
 字符串模板插值和format格式字符串之间的一个关键区别是，前者没有格式化选项可用。例如，无法控制表示浮点值的位数。
 不过，好处是使用safe_substitute()方法可以避免模板所需要的所有值作为参数提供的异常。</br>
 [string_template_missing.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string_src/string_template_missing.py)
-<pre><code>import string
+<pre><code># string_template_missing.py
+import string
 
 values = {"var": "foo"}
 
@@ -79,7 +82,8 @@ safe_substitute(): foo is here but $missing is not provided</code></pre>
 ## Advanced Templates
 通过调整用于在模板主体中查找变量名的正则表达式模式，可以更改字符串模板的默认语法。一种简单的方法是改变分隔符和idpattern类的属性。</br>
 [string_template_advanced.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string_src/string_template_advanced.py)
-<pre><code>import string
+<pre><code># string_template_advanced.py
+import string
 
 class MyTemplate(string.Template):
     delimiter = "%"
@@ -106,7 +110,8 @@ Ignored   : %notunderscored</code></pre>
 在本例中，替换规则发生了更改，分隔符是%而不是$，变量名必须在中间的某处包含一个下划线。%notunderscored没有被替换，因为它不包括下划线。
 对于更复杂的更改，可以重写pattern属性并定义一个全新的正则表达式。所提供的模式必须包含4个命名组，用于捕获转义分隔符、命名变量、变量名称的支撑版本和无效的分隔符模式。</br>
 [string_template_defaultpattern.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string_src/string_template_defaultpattern.py)
-<pre><code>import string
+<pre><code># string_template_defaultpattern.py
+import string
 
 t = string.Template("$var")
 print(t.pattern.pattern)</code></pre>
@@ -119,7 +124,8 @@ print(t.pattern.pattern)</code></pre>
 )</code></pre>
 下面这个例子定义了一个新模式，以创建一个新的模板类型，使用{{var}}作为变量语法。</br>
 [string_template_newsyntax.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string_src/string_template_newsyntax.py)
-<pre><code>import re
+<pre><code># string_template_newsyntax.py
+import re
 import string
 
 class MyTemplate(string.Template):
@@ -149,7 +155,8 @@ Formatter类实现了与str的format()方法相同的布局规范语言，其特
 ## Constants
 字符串模块包含了一些与ASCII和数值字符集相关的常量。</br>
 [string_constances.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string_src/string_constances.py)
-<pre><code>import inspect
+<pre><code># string_constances.py
+import inspect
 import string
 
 def is_str(value):
