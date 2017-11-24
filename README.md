@@ -3,7 +3,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
 
 ## 目录
 * Text
-    - string -- Text Constants and Templates
+    - [string](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/string.md) -- Text Constants and Templates
     - textwrap -- Formatting Text Paragraphs
     - re -- Regular Expressions
     - difflib -- Compare Sequences
