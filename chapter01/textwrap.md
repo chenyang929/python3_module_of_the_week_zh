@@ -4,8 +4,7 @@
 textwrap模块可用于在需要预打印的情况下为输出格式化文本。它提供类似于在许多文本编辑器和文字处理器中发现的段落包装或填充功能类似的编程功能
 
 ## Example Data
-本节中的示例使用模块textwrap_example.py，其中包含一个字符串sample_text。<br>
-[textwrap_example.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/textwrap_src/textwrap_example.py)
+本节中的示例使用模块[textwrap_example.py](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/chapter01/textwrap_src/textwrap_example.py)，其中包含一个字符串sample_text。
 <pre><code># textwrap_example.py
 
 sample_text = """
