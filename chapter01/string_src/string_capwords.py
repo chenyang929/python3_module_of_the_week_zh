@@ -1,3 +1,4 @@
+# string_capwords.py
 import string
 
 s = "人生苦短, we use pytHon."
