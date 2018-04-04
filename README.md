@@ -9,7 +9,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - difflib -- Compare Sequences
 * Data Structures
     - enum -- Enumeration Type
-    - collectios -- Container Data Types
+    - [collectios](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/collections.md) -- Container Data Types
     - array -- Sequence of Fixed-type Data
     - heapq -- Heap Sort Algorithm
     - bisect -- Maintain Lists in Sorted Order
