@@ -1,4 +1,4 @@
-#Counter -- Count Hashable Objects
+# Counter -- Count Hashable Objects
 Counter是一个容器，它可以跟踪添相同的值出现的次数。它可以用于实现其他语言通常使用包或多集数据结构的相同算法。
 ## Initializing
 Counter支持三种形式的初始化。可以传递元素的序列，一个包含键和计数的字典，或者使用键到计数的映射的关键字参数。
