@@ -3,7 +3,7 @@
 > collections模块包括了除内置列表，字典，元祖之外的容器数据类型
 
 * [ChainMap](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/ChainMap/ChainMap.md) -- Search Multiple Dictionaries
-* [Counter]() -- Count Hashable Objects
+* [Counter](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/Counter/Counter.md) -- Count Hashable Objects
 * [defaultdict]() -- Missing Keys Return a Default Value
 * [deque]() -- Double-Ended Queue
 * [namedtuple]() -- Tuple Subclass with Named Field
