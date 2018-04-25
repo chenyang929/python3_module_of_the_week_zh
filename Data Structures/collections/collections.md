@@ -7,8 +7,8 @@
 * [defaultdict](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/defaultdict/defaultdict.md) -- Missing Keys Return a Default Value
 * [deque](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/deque/deque.md) -- Double-Ended Queue
 * [namedtuple](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/namedtuple/namedtuple.md) -- Tuple Subclass with Named Field
-* [OrderDict]() -- Remember the Order Keys are Added to a Dictionary
-* [colllections.abc]() -- Abstract Base Classes for Containers
+* [OrderDict](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/OrderedDict/OrderedDict.md) -- Remember the Order Keys are Added to a Dictionary
+* [collections.abc]() -- Abstract Base Classes for Containers
 
 ## See also
 * [Standard library documentation for collections](https://docs.python.org/3.6/library/collections.html)
