@@ -6,7 +6,7 @@
 * [Counter](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/Counter/Counter.md) -- Count Hashable Objects
 * [defaultdict](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/defaultdict/defaultdict.md) -- Missing Keys Return a Default Value
 * [deque](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/deque/deque.md) -- Double-Ended Queue
-* [namedtuple]() -- Tuple Subclass with Named Field
+* [namedtuple](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/namedtuple/namedtuple.md) -- Tuple Subclass with Named Field
 * [OrderDict]() -- Remember the Order Keys are Added to a Dictionary
 * [colllections.abc]() -- Abstract Base Classes for Containers
 
