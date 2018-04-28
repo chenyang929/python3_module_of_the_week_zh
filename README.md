@@ -15,7 +15,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - bisect -- Maintain Lists in Sorted Order
     - queue -- Thread-Safe FIFO Implementation
     - struct -- Binary Data Structures
-    - weakref -- Impermanent References to Objects
+    - [weakref](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/weakref/WEAKREF.md) -- Impermanent References to Objects
     - copy -- Duplicate Objects
     - pprint -- Pretty-Print Data Structures
 
