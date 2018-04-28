@@ -61,7 +61,7 @@ print('r():', r())
 print('deleting obj')
 del obj
 print('r():', r())</pre></code>
-在引用死后，回调接收引用对象作为参数，并不再引用原始对象。此特性的一个用途是将弱引用对象从缓存中删除。
+在引用“死”后，回调接收引用对象作为参数，并不再引用原始对象。此特性的一个用途是将弱引用对象从缓存中删除。
 <pre><code>$ python weakref_ref_callback.py
 obj: <__main__.ExpensiveObject object at 0x0000018C18D2E400>
 ref: <weakref at 0x0000018C18D1CF98; to 'ExpensiveObject' at 0x0000018C18D2E400>
@@ -224,4 +224,105 @@ Traceback (most recent call last):
     print('via proxy:', p.name)
 ReferenceError: weakly-referenced object no longer exists</pre></code>
 ## Caching Objects
+ref和proxy类被认为是“低级别的”。虽然它们对于保持对单个对象的弱引用和允许循环被垃圾收集很有用，
+但是WeakKeyDictionary和WeakValueDictionary类提供了一个更合适的API来创建多个对象的缓存。
 
+WeakValueDictionary类使用弱引用来引用它所保存的值，当其他代码没有实际使用时，它们可以被垃圾收集。
+使用对垃圾收集器的显式调用，说明了使用常规字典和WeakValueDictionary处理内存的区别:
+<pre><code># weakref_valuedict.py
+
+import gc
+from pprint import pprint
+import weakref
+
+gc.set_debug(gc.DEBUG_UNCOLLECTABLE)
+
+
+class ExpensiveObject:
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return 'ExpensiveObject({})'.format(self.name)
+
+    def __del__(self):
+        print('   (Deleting {})'.format(self))
+
+
+def demo(cache_factory):
+    #  保存对象防止任何弱引用被立即移除
+    all_refs = {}
+    #  使用工厂创建缓存
+    print('CACHE TYPE:', cache_factory)
+    cache = cache_factory()
+    for name in ['one', 'two', 'three']:
+        o = ExpensiveObject(name)
+        cache[name] = o
+        all_refs[name] = o
+        del o
+
+    print('  all_refs =', end=' ')
+    pprint(all_refs)
+    print('\n  Before, cache contains:', list(cache.keys()))
+    for name, value in cache.items():
+        print('   {} = {}'.format(name, value))
+        del value
+
+    # 除了缓存外删除所有对象的引用
+    print('\n  Cleanup')
+    del all_refs
+    gc.collect()
+
+    print('\n  After, cache contains:', list(cache.keys()))
+    for name, value in cache.items():
+        print('   {} = {}'.format(name, value))
+    print('   demo returning')
+    return
+
+
+demo(dict)
+print()
+demo(weakref.WeakValueDictionary)</pre></code>
+任何引用被缓存的值的循环变量都必须被显式地清除，这样对象的引用计数就会减少。否则，垃圾收集器将不会删除对象，它们将保留在缓存中。
+类似地，all_refs变量用于保存引用，以防止它们被过早地收集。
+<pre><code>$ python weakref_valuedict.py
+CACHE TYPE: <class 'dict'>
+  all_refs = {'one': ExpensiveObject(one),
+ 'three': ExpensiveObject(three),
+ 'two': ExpensiveObject(two)}
+
+  Before, cache contains: ['one', 'two', 'three']
+   one = ExpensiveObject(one)
+   two = ExpensiveObject(two)
+   three = ExpensiveObject(three)
+
+  Cleanup
+
+  After, cache contains: ['one', 'two', 'three']
+   one = ExpensiveObject(one)
+   two = ExpensiveObject(two)
+   three = ExpensiveObject(three)
+   demo returning
+   (Deleting ExpensiveObject(one))
+   (Deleting ExpensiveObject(two))
+   (Deleting ExpensiveObject(three))
+
+CACHE TYPE: <class 'weakref.WeakValueDictionary'>
+  all_refs = {'one': ExpensiveObject(one),
+ 'three': ExpensiveObject(three),
+ 'two': ExpensiveObject(two)}
+
+  Before, cache contains: ['one', 'two', 'three']
+   one = ExpensiveObject(one)
+   two = ExpensiveObject(two)
+   three = ExpensiveObject(three)
+
+  Cleanup
+   (Deleting ExpensiveObject(one))
+   (Deleting ExpensiveObject(two))
+   (Deleting ExpensiveObject(three))
+
+  After, cache contains: []
+   demo returning</pre></code>
+WeakKeyDictionary的工作原理和常规字典类似，但是使用弱引用来代替字典中的值。
