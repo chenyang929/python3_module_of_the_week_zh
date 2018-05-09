@@ -23,7 +23,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [datetime](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Dates%20and%20Times/datetime/datetime.md) -- Date and Time Value Manipulation
     - [calendar](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Dates%20and%20Times/calendar/calendar.md) -- Work with Dates
 * Mathematics
-    - [decimal]() -- Fixed and Floating Point Math
+    - [decimal](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/decimal/decimal.md) -- Fixed and Floating Point Math
     - [fractions]() -- Rational Numbers
     - [random]() -- Pseudorandom Number Generators
     - [math]() -- Mathematical Functions
