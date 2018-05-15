@@ -479,4 +479,476 @@ print(math.gcd(0, 0))</pre></code>
 25
 1
 0</pre></code>
+## Exponents and Logarithms
+指数增长曲线出现在经济学、物理学和其他科学领域。
+Python有一个内置的指数运算符(“**”)，但是当需要一个可调用函数作为另一个函数的参数时，pow()可能会有用。
+<pre><code># math_pow.py
+
+import math
+
+INPUTS = [
+    # Typical uses
+    (2, 3),
+    (2.1, 3.2),
+
+    # Always 1
+    (1.0, 5),
+    (2.0, 0),
+
+    # Not-a-number
+    (2, float('nan')),
+
+    # Roots
+    (9.0, 0.5),
+    (27.0, 1.0 / 3),
+]
+
+for x, y in INPUTS:
+    print('{:5.1f} ** {:5.3f} = {:6.3f}'.format(
+        x, y, math.pow(x, y)))</pre></code>
+大多数非数字值的操作都是nan返回nan。如果指数小于1,pow()计算一个根。
+<pre><code>$ python math_pow.py
+  2.0 ** 3.000 =  8.000
+  2.1 ** 3.200 = 10.742
+  1.0 ** 5.000 =  1.000
+  2.0 ** 0.000 =  1.000
+  2.0 **   nan =    nan
+  9.0 ** 0.500 =  3.000
+ 27.0 ** 0.333 =  3.000</pre></code>
+由于方根(1/2的指数)被频繁地使用，因此有一个单独的计算它们的函数。
+<pre><code># math_sqrt.py
+
+import math
+
+print(math.sqrt(9.0))
+print(math.sqrt(3))
+try:
+    print(math.sqrt(-1))
+except ValueError as err:
+    print('Cannot compute sqrt(-1):', err)</pre></code>
+计算负数的平方根需要复数，而不是由math模块来处理。任何试图计算负数的平方根的尝试都会产生一个ValueError。
+<pre><code>$ python math_sqrt.py
+3.0
+1.7320508075688772
+Cannot compute sqrt(-1): math domain error</pre></code>
+在默认情况下，log()计算自然对数(底为e)，如果提供第二个参数，则将该值用作基础。
+<pre><code># math_log.py
+
+import math
+
+print(math.log(8))
+print(math.log(8, 2))
+print(math.log(0.5, 2))</pre></code>
+小于1的对数结果是负数。
+<pre><code>$ python math_log.py
+2.0794415416798357
+3.0
+-1.0</pre></code>
+log()有三种变体。给定浮点表示法和舍入误差，log(x, b)所产生的计算值的精度有限，特别是在某些基础上。log10()计算log(x, 10)，使用比log()更精确的算法。
+<pre><code># math_log10.py
+
+import math
+
+print('{:2} {:^12} {:^10} {:^20} {:8}'.format(
+    'i', 'x', 'accurate', 'inaccurate', 'mismatch',
+))
+print('{:-^2} {:-^12} {:-^10} {:-^20} {:-^8}'.format(
+    '', '', '', '', '',
+))
+
+for i in range(0, 10):
+    x = math.pow(10, i)
+    accurate = math.log10(x)
+    inaccurate = math.log(x, 10)
+    match = '' if int(inaccurate) == i else '*'
+    print('{:2d} {:12.1f} {:10.8f} {:20.18f} {:^5}'.format(
+        i, x, accurate, inaccurate, match,
+    ))</pre></code>
+输出末尾的行*突出了不准确的值。
+<pre><code>$ python math_log10.py
+i       x        accurate       inaccurate      mismatch
+-- ------------ ---------- -------------------- --------
+ 0          1.0 0.00000000 0.000000000000000000      
+ 1         10.0 1.00000000 1.000000000000000000      
+ 2        100.0 2.00000000 2.000000000000000000      
+ 3       1000.0 3.00000000 2.999999999999999556   *  
+ 4      10000.0 4.00000000 4.000000000000000000      
+ 5     100000.0 5.00000000 5.000000000000000000      
+ 6    1000000.0 6.00000000 5.999999999999999112   *  
+ 7   10000000.0 7.00000000 7.000000000000000000      
+ 8  100000000.0 8.00000000 8.000000000000000000      
+ 9 1000000000.0 9.00000000 8.999999999999998224   * </pre></code>
+类似于log10()， log2()计算等价于math.log(x,2)。
+<pre><code># math_log2.py
+
+import math
+
+print('{:>2} {:^5} {:^5}'.format(
+    'i', 'x', 'log2',
+))
+print('{:-^2} {:-^5} {:-^5}'.format(
+    '', '', '',
+))
+
+for i in range(0, 10):
+    x = math.pow(2, i)
+    result = math.log2(x)
+    print('{:2d} {:5.1f} {:5.1f}'.format(
+        i, x, result,
+    ))</pre></code>
+根据底层平台的不同，使用内置的和特殊目的的函数可以提供更好的性能和准确性，使用的是在更通用的功能中没有找到的基础2的专用算法。
+<pre><code>$ python math_log2.py
+ i   x   log2 
+-- ----- -----
+ 0   1.0   0.0
+ 1   2.0   1.0
+ 2   4.0   2.0
+ 3   8.0   3.0
+ 4  16.0   4.0
+ 5  32.0   5.0
+ 6  64.0   6.0
+ 7 128.0   7.0
+ 8 256.0   8.0
+ 9 512.0   9.0</pre></code>
+log1p()计算Newton-Mercator系列(1+x的自然对数)。
+<pre><code># math_log1p.py
+
+import math
+
+x = 0.0000000000000000000000001
+print('x       :', x)
+print('1 + x   :', 1 + x)
+print('log(1+x):', math.log(1 + x))
+print('log1p(x):', math.log1p(x))</pre></code>
+log1p()对于x非常接近于零的值更精确，因为它使用一种算法来补偿初始添加的舍入错误。
+<pre><code>$ python math_log1p.py
+x       : 1e-25
+1 + x   : 1.0
+log(1+x): 0.0
+log1p(x): 1e-25</pre></code>
+exp()计算指数函数(e**x)。
+<pre><code># math_exp.py
+
+import math
+
+x = 2
+
+fmt = '{:.20f}'
+print(fmt.format(math.e ** 2))
+print(fmt.format(math.pow(math.e, 2)))
+print(fmt.format(math.exp(2)))</pre></code>
+与其他特殊情况函数一样，它使用一种算法来产生比通用等效的math.pow(math.e, x)更精确的结果。
+<pre><code>$ python math_exp.py
+7.38905609893064951876
+7.38905609893064951876
+7.38905609893065040694</pre></code>
+expm1()是log1p()的倒数，并计算e**x - 1。
+<pre><code># math_expm1.py
+
+import math
+
+x = 0.0000000000000000000000001
+
+print(x)
+print(math.exp(x) - 1)
+print(math.expm1(x))</pre></code>
+当单独执行减法时，小的x值会失去精度，比如log1p()。
+<pre><code>$ python math_expm1.py
+1e-25
+0.0
+1e-25</pre></code>
+## Angles
+虽然角度在日常讨论中更常用，但弧度是科学和数学中角测量的标准单位。弧度是由两条线在圆的中心相交形成的角度，它们的两端在圆的圆周上，间距为一个半径。
+
+周长计算为2πr，因此弧度与π之间存在一种关系，这一数值在三角计算中经常出现。这种关系导致了在三角学和微积分中使用的弧度，因为它们会产生更紧凑的公式。
+
+角度要转换成弧度，使用radians()函数。
+<pre><code># math_radians.py
+
+import math
+
+print('{:^7} {:^7} {:^7}'.format(
+    'Degrees', 'Radians', 'Expected'))
+print('{:-^7} {:-^7} {:-^7}'.format(
+    '', '', ''))
+
+INPUTS = [
+    (0, 0),
+    (30, math.pi / 6),
+    (45, math.pi / 4),
+    (60, math.pi / 3),
+    (90, math.pi / 2),
+    (180, math.pi),
+    (270, 3 / 2.0 * math.pi),
+    (360, 2 * math.pi),
+]
+
+for deg, expected in INPUTS:
+    print('{:7d} {:7.2f} {:7.2f}'.format(
+        deg,
+        math.radians(deg),
+        expected,
+    ))</pre></code>
+转换公式为rad = deg * π / 180。
+<pre><code>$ python math_radians.py
+Degrees Radians Expected
+------- ------- -------
+      0    0.00    0.00
+     30    0.52    0.52
+     45    0.79    0.79
+     60    1.05    1.05
+     90    1.57    1.57
+    180    3.14    3.14
+    270    4.71    4.71
+    360    6.28    6.28</pre></code>
+要从弧度转换成角度，请使用degrees()。
+<pre><code># math_degrees.py
+
+import math
+
+INPUTS = [
+    (0, 0),
+    (math.pi / 6, 30),
+    (math.pi / 4, 45),
+    (math.pi / 3, 60),
+    (math.pi / 2, 90),
+    (math.pi, 180),
+    (3 * math.pi / 2, 270),
+    (2 * math.pi, 360),
+]
+
+print('{:^8} {:^8} {:^8}'.format(
+    'Radians', 'Degrees', 'Expected'))
+print('{:-^8} {:-^8} {:-^8}'.format('', '', ''))
+for rad, expected in INPUTS:
+    print('{:8.2f} {:8.2f} {:8.2f}'.format(
+        rad,
+        math.degrees(rad),
+        expected,
+    ))</pre></code>
+公式为deg = rad * 180 / π 。
+<pre><code>$ python math_degrees.py
+Radians  Degrees  Expected
+-------- -------- --------
+    0.00     0.00     0.00
+    0.52    30.00    30.00
+    0.79    45.00    45.00
+    1.05    60.00    60.00
+    1.57    90.00    90.00
+    3.14   180.00   180.00
+    4.71   270.00   270.00
+    6.28   360.00   360.00</pre></code>
+## Trigonometry
+三角函数把三角形中的角与边的长度联系起来。它们出现在具有周期性特性的公式中，如谐波、圆周运动，或在处理角度时。标准库中的所有三角函数都以弧度表示。
+
+在一个直角三角形中，正弦是边的长度与斜边的比(sin a =对边/斜边)。cos是邻边长度与斜边的比值(cos A =邻边/斜边)。tan等于对边与邻边的比值(tan A =对边/邻边)
+<pre><code># math_trig.py
+
+import math
+
+print('{:^7} {:^7} {:^7} {:^7} {:^7}'.format(
+    'Degrees', 'Radians', 'Sine', 'Cosine', 'Tangent'))
+print('{:-^7} {:-^7} {:-^7} {:-^7} {:-^7}'.format(
+    '-', '-', '-', '-', '-'))
+
+fmt = '{:7.2f} {:7.2f} {:7.2f} {:7.2f} {:7.2f}'
+
+for deg in range(0, 361, 30):
+    rad = math.radians(deg)
+    if deg in (90, 270):
+        t = float('inf')
+    else:
+        t = math.tan(rad)
+    print(fmt.format(deg, rad, math.sin(rad), math.cos(rad), t))</pre></code>
+<pre><code>$ python math_trig.py
+切的比例也可以被定义为角度的正弦余弦,既然cos = 0为π/ 2和3π/ 2弧度,切是无限的。
+<pre><code>$ python math_trig.py
+Degrees Radians  Sine   Cosine  Tangent
+------- ------- ------- ------- -------
+   0.00    0.00    0.00    1.00    0.00
+  30.00    0.52    0.50    0.87    0.58
+  60.00    1.05    0.87    0.50    1.73
+  90.00    1.57    1.00    0.00     inf
+ 120.00    2.09    0.87   -0.50   -1.73
+ 150.00    2.62    0.50   -0.87   -0.58
+ 180.00    3.14    0.00   -1.00   -0.00
+ 210.00    3.67   -0.50   -0.87    0.58
+ 240.00    4.19   -0.87   -0.50    1.73
+ 270.00    4.71   -1.00   -0.00     inf
+ 300.00    5.24   -0.87    0.50   -1.73
+ 330.00    5.76   -0.50    0.87   -0.58
+ 360.00    6.28   -0.00    1.00   -0.00</pre></code>
+给定一个点(x, y)，在点\[(0,0)，(x, 0)， (x, y)]三角形斜边的长度为(x ** 2 + y ** 2) ** 1/2，可以用hypot()计算。
+<pre><code># math_hypot.py
+
+import math
+
+print('{:^7} {:^7} {:^10}'.format('X', 'Y', 'Hypotenuse'))
+print('{:-^7} {:-^7} {:-^10}'.format('', '', ''))
+
+POINTS = [
+    # simple points
+    (1, 1),
+    (-1, -1),
+    (math.sqrt(2), math.sqrt(2)),
+    (3, 4),  # 3-4-5 triangle
+    # on the circle
+    (math.sqrt(2) / 2, math.sqrt(2) / 2),  # pi/4 rads
+    (0.5, math.sqrt(3) / 2),  # pi/3 rads
+]
+
+for x, y in POINTS:
+    h = math.hypot(x, y)
+    print('{:7.2f} {:7.2f} {:7.2f}'.format(x, y, h))</pre></code>
+圆上的点总是有斜边等于1。
+<pre><code>$ python math_hypot.py
+   X       Y    Hypotenuse
+------- ------- ----------
+   1.00    1.00    1.41
+  -1.00   -1.00    1.41
+   1.41    1.41    2.00
+   3.00    4.00    5.00
+   0.71    0.71    1.00
+   0.50    0.87    1.00</pre></code>
+同样的函数可以用来求两点之间的距离。
+<pre><code># math_distance_2_points.py
+
+import math
+
+print('{:^8} {:^8} {:^8} {:^8} {:^8}'.format(
+    'X1', 'Y1', 'X2', 'Y2', 'Distance',
+))
+print('{:-^8} {:-^8} {:-^8} {:-^8} {:-^8}'.format(
+    '', '', '', '', '',
+))
+
+POINTS = [
+    ((5, 5), (6, 6)),
+    ((-6, -6), (-5, -5)),
+    ((0, 0), (3, 4)),  # 3-4-5 triangle
+    ((-1, -1), (2, 3)),  # 3-4-5 triangle
+]
+
+for (x1, y1), (x2, y2) in POINTS:
+    x = x1 - x2
+    y = y1 - y2
+    h = math.hypot(x, y)
+    print('{:8.2f} {:8.2f} {:8.2f} {:8.2f} {:8.2f}'.format(
+        x1, y1, x2, y2, h,
+    ))</pre></code>
+使用x和y值的差异将一个端点移动到原点，然后将结果传递给hypot()。
+<pre><code>$ python math_distance_2_points.py
+   X1       Y1       X2       Y2    Distance
+-------- -------- -------- -------- --------
+    5.00     5.00     6.00     6.00     1.41
+   -6.00    -6.00    -5.00    -5.00     1.41
+    0.00     0.00     3.00     4.00     5.00
+   -1.00    -1.00     2.00     3.00     5.00</pre></code>
+数学也定义了反三角函数。
+<pre><code># math_inverse_trig.py
+
+import math
+
+for r in [0, 0.5, 1]:
+    print('arcsine({:.1f})    = {:5.2f}'.format(r, math.asin(r)))
+    print('arccosine({:.1f})  = {:5.2f}'.format(r, math.acos(r)))
+    print('arctangent({:.1f}) = {:5.2f}'.format(r, math.atan(r)))
+    print()</pre></code>
+1.57约等于π/2,或90度角, 正弦值是1的余弦值是0。
+<pre><code>$ python math_inverse_trig.py
+arcsine(0.0)    =  0.00
+arccosine(0.0)  =  1.57
+arctangent(0.0) =  0.00
+
+arcsine(0.5)    =  0.52
+arccosine(0.5)  =  1.05
+arctangent(0.5) =  0.46
+
+arcsine(1.0)    =  1.57
+arccosine(1.0)  =  0.00
+arctangent(1.0) =  0.79</pre></code>
+## Hyperbolic Functions
+双曲函数出现在线性微分方程中，在使用电磁场、流体力学、狭义相对论和其他高等物理和数学时使用。
+<pre><code># math_hyperbolic.py
+
+import math
+
+print('{:^6} {:^6} {:^6} {:^6}'.format(
+    'X', 'sinh', 'cosh', 'tanh',
+))
+print('{:-^6} {:-^6} {:-^6} {:-^6}'.format('', '', '', ''))
+
+fmt = '{:6.4f} {:6.4f} {:6.4f} {:6.4f}'
+
+for i in range(0, 11, 2):
+    x = i / 10.0
+    print(fmt.format(
+        x,
+        math.sinh(x),
+        math.cosh(x),
+        math.tanh(x),
+    ))</pre></code>
+而余弦函数和正弦函数是一个圆，双曲余弦和双曲正弦函数是双曲线的一半。
+<pre><code>$ python math_hyperbolic.py
+  X     sinh   cosh   tanh 
+------ ------ ------ ------
+0.0000 0.0000 1.0000 0.0000
+0.2000 0.2013 1.0201 0.1974
+0.4000 0.4108 1.0811 0.3799
+0.6000 0.6367 1.1855 0.5370
+0.8000 0.8881 1.3374 0.6640
+1.0000 1.1752 1.5431 0.7616</pre></code>
+反双曲函数acosh()、asinh()和atanh()也可用。
+## Special Functions
+高斯误差函数用于统计。
+<pre><code># math_erf.py
+
+import math
+
+print('{:^5} {:7}'.format('x', 'erf(x)'))
+print('{:-^5} {:-^7}'.format('', ''))
+
+for x in [-3, -2, -1, -0.5, -0.25, 0, 0.25, 0.5, 1, 2, 3]:
+    print('{:5.2f} {:7.4f}'.format(x, math.erf(x)))</pre></code>
+对于误差函数，erf(-x) == -erf(x)。
+<pre><code>$ python math_erf.py
+  x   erf(x) 
+----- -------
+-3.00 -1.0000
+-2.00 -0.9953
+-1.00 -0.8427
+-0.50 -0.5205
+-0.25 -0.2763
+ 0.00  0.0000
+ 0.25  0.2763
+ 0.50  0.5205
+ 1.00  0.8427
+ 2.00  0.9953
+ 3.00  1.0000</pre></code>
+互补误差函数为1 - erf(x)。
+<pre><code># math_erfc.py
+
+import math
+
+print('{:^5} {:7}'.format('x', 'erfc(x)'))
+print('{:-^5} {:-^7}'.format('', ''))
+
+for x in [-3, -2, -1, -0.5, -0.25, 0, 0.25, 0.5, 1, 2, 3]:
+    print('{:5.2f} {:7.4f}'.format(x, math.erfc(x)))</pre></code>
+erfc()的实现避免了从1中减去x的小值的精度错误。
+<pre><code>$ python math_erfc.py
+  x   erfc(x)
+----- -------
+-3.00  2.0000
+-2.00  1.9953
+-1.00  1.8427
+-0.50  1.5205
+-0.25  1.2763
+ 0.00  1.0000
+ 0.25  0.7237
+ 0.50  0.4795
+ 1.00  0.1573
+ 2.00  0.0047
+ 3.00  0.0000</pre></code>
+
 

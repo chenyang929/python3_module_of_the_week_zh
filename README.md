@@ -26,7 +26,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [decimal](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/decimal/decimal.md) -- Fixed and Floating Point Math
     - [fractions](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/fractions/fractions.md) -- Rational Numbers
     - [random](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/random/random.md) -- Pseudorandom Number Generators
-    - [math]() -- Mathematical Functions
+    - [math](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/math/math.md) -- Mathematical Functions
     - [statistics]() -- Statistical Calculations
 
 
