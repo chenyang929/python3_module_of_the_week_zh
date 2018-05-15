@@ -760,7 +760,6 @@ for deg in range(0, 361, 30):
     else:
         t = math.tan(rad)
     print(fmt.format(deg, rad, math.sin(rad), math.cos(rad), t))</pre></code>
-<pre><code>$ python math_trig.py
 切的比例也可以被定义为角度的正弦余弦,既然cos = 0为π/ 2和3π/ 2弧度,切是无限的。
 <pre><code>$ python math_trig.py
 Degrees Radians  Sine   Cosine  Tangent
