@@ -18,6 +18,11 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [weakref](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/weakref/WEAKREF.md) -- Impermanent References to Objects
     - [copy](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/copy/copy.md) -- Duplicate Objects
     - [pprint](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/pprint/pprint.md) -- Pretty-Print Data Structures
+* Algorithms
+    - [functools]() -- Tools for Manipulating Functions
+    - [itertools]() -- Iterator Functions
+    - [operator]() -- Functional Interface to Built-in Operators
+    - [contextlib]() -- Context Manager Utilities
 * Dates and Times
     - [time](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Dates%20and%20Times/time/time.md) -- Clock Time
     - [datetime](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Dates%20and%20Times/datetime/datetime.md) -- Date and Time Value Manipulation
@@ -27,7 +32,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [fractions](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/fractions/fractions.md) -- Rational Numbers
     - [random](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/random/random.md) -- Pseudorandom Number Generators
     - [math](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/math/math.md) -- Mathematical Functions
-    - [statistics]() -- Statistical Calculations
+    - [statistics](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/statistics/statistics.md) -- Statistical Calculations
 
 
 
