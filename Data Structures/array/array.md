@@ -69,4 +69,44 @@ A1: array('i', [0, 1, 2, 3, 4])
 Bytes: b'0000000001000000020000000300000004000000'
 A2: array('i', [0, 1, 2, 3, 4])</pre></code>
 ## Alternative Byte Ordering
+如果数组中的数据不是在本机字节顺序,或者如果需要交换的数据被发送到系统之前有不同字节顺序(或在网络上),可以无需遍历元素而转换整个数组。
+<pre><code># array_byteswap.py
+
+
+import array
+import binascii
+
+
+def to_hex(a):
+    chars_per_item = a.itemsize * 2  # 2 hex digits
+    hex_version = binascii.hexlify(a)
+    num_chunks = len(hex_version) // chars_per_item
+    for i in range(num_chunks):
+        start = i * chars_per_item
+        end = start + chars_per_item
+        yield hex_version[start:end]
+
+
+start = int('0x12345678', 16)
+end = start + 5
+a1 = array.array('i', range(start, end))
+a2 = array.array('i', range(start, end))
+a2.byteswap()
+
+fmt = '{:>12} {:>12} {:>12} {:>12}'
+print(fmt.format('A1 hex', 'A1', 'A2 hex', 'A2'))
+print(fmt.format('-' * 12, '-' * 12, '-' * 12, '-' * 12))
+fmt = '{!r:>12} {:12} {!r:>12} {:12}'
+for values in zip(to_hex(a1), a1, to_hex(a2), a2):
+    print(fmt.format(*values))</pre></code>
+byteswap()方法从C中切换数组中项目的字节顺序，因此它比用Python来循环数据要高效得多。
+<pre><code>$ python array_byteswap.py
+      A1 hex           A1       A2 hex           A2
+------------ ------------ ------------ ------------
+ b'78563412'    305419896  b'12345678'   2018915346
+ b'79563412'    305419897  b'12345679'   2035692562
+ b'7a563412'    305419898  b'1234567a'   2052469778
+ b'7b563412'    305419899  b'1234567b'   2069246994
+ b'7c563412'    305419900  b'1234567c'   2086024210</pre></code>
+
 
