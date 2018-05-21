@@ -1,8 +1,8 @@
 # heapq_heapush.py
 
 import heapq
-from heapq_heapdata import data
 from heapq_showtree import show_tree
+from heapq_heapdata import data
 
 heap = []
 print('random :', data)

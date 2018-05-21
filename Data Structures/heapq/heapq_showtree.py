@@ -4,7 +4,8 @@ import math
 from io import StringIO
 
 
-def show_tree(tree, total_width=36, fill=''):
+def show_tree(tree, total_width=36, fill=' '):
+    """Pretty-print a tree."""
     output = StringIO()
     last_row = -1
     for i, n in enumerate(tree):
