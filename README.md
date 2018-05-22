@@ -12,7 +12,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [collectios](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/collections.md) -- Container Data Types
     - [array](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/array/array.md) -- Sequence of Fixed-type Data
     - [heapq](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/heapq/heapq.md) -- Heap Sort Algorithm
-    - bisect -- Maintain Lists in Sorted Order
+    - [bisect](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/bisect/bisect.md) -- Maintain Lists in Sorted Order
     - queue -- Thread-Safe FIFO Implementation
     - struct -- Binary Data Structures
     - [weakref](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/weakref/WEAKREF.md) -- Impermanent References to Objects
