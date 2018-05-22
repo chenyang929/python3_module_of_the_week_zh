@@ -14,7 +14,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [heapq](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/heapq/heapq.md) -- Heap Sort Algorithm
     - [bisect](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/bisect/bisect.md) -- Maintain Lists in Sorted Order
     - [queue](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/queue/queue.md) -- Thread-Safe FIFO Implementation
-    - struct -- Binary Data Structures
+    - [struct](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/struct/struct.md) -- Binary Data Structures
     - [weakref](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/weakref/WEAKREF.md) -- Impermanent References to Objects
     - [copy](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/copy/copy.md) -- Duplicate Objects
     - [pprint](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/pprint/pprint.md) -- Pretty-Print Data Structures
