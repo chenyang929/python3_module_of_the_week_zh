@@ -6,7 +6,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [string](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Text/string/string.md) -- Text Constants and Templates
     - [textwrap](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Text/textwrap/textwrap.md) -- Formatting Text Paragraphs
     - [re](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Text/re/re.md) -- Regular Expressions
-    - difflib -- Compare Sequences
+    - [difflib](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Text/difflib/difflib.md) -- Compare Sequences
 * Data Structures
     - [enum](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/enum/enum.md) -- Enumeration Type
     - [collectios](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/collections/collections.md) -- Container Data Types
