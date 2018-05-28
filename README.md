@@ -33,6 +33,19 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [random](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/random/random.md) -- Pseudorandom Number Generators
     - [math](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/math/math.md) -- Mathematical Functions
     - [statistics](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Mathematics/statistics/statistics.md) -- Statistical Calculations
+* The File System
+	- [os.path]() -- Platform-independent Manipulation of Filenames
+	- [pathlib]() -- Filesystem Paths as Objects
+	- [glob]() -- Filename Pattern Matching
+	- [fnmatch]() -- Unix-style Glob Pattern Matching
+	- [linecache]() -- Read Text Files System Efficiently
+	- [tempfile]() -- Temporary File System Objects
+	- [shutil]() -- High-leval File Operations
+	- [filecmp]() -- Compare Files
+	- [mmap]() -- Memory-map Files
+	- [codecs]() -- String Encoding and Decoding
+	- [io]() -- Text, Binary, and Raw Stream I/O Tools
+
 
 
 
