@@ -36,7 +36,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
 * The File System
 	- [os.path](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/os.path/os.path.md) -- Platform-independent Manipulation of Filenames
 	- [pathlib](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/pathlib/pathlib.md) -- Filesystem Paths as Objects
-	- [glob]() -- Filename Pattern Matching
+	- [glob](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/glob/glob.md) -- Filename Pattern Matching
 	- [fnmatch]() -- Unix-style Glob Pattern Matching
 	- [linecache]() -- Read Text Files System Efficiently
 	- [tempfile]() -- Temporary File System Objects
