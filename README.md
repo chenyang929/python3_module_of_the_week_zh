@@ -43,7 +43,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
 	- [shutil](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/shutil/shutil.md) -- High-leval File Operations
 	- [filecmp](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/filecmp/filecmp.md) -- Compare Files
 	- [mmap](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/mmap/mmap.md) -- Memory-map Files
-	- [codecs]() -- String Encoding and Decoding
+	- [codecs](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/codecs/codecs.md) -- String Encoding and Decoding
 	- [io]() -- Text, Binary, and Raw Stream I/O Tools
 
 
