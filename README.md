@@ -20,7 +20,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
     - [pprint](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Structures/pprint/pprint.md) -- Pretty-Print Data Structures
 * Algorithms
     - [functools](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Algorithms/functools/functools.md) -- Tools for Manipulating Functions
-    - [itertools]() -- Iterator Functions
+    - [itertools](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Algorithms/itertools/itertools.md) -- Iterator Functions
     - [operator]() -- Functional Interface to Built-in Operators
     - [contextlib]() -- Context Manager Utilities
 * Dates and Times
