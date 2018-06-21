@@ -21,7 +21,7 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
 * Algorithms
     - [functools](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Algorithms/functools/functools.md) -- Tools for Manipulating Functions
     - [itertools](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Algorithms/itertools/itertools.md) -- Iterator Functions
-    - [operator]() -- Functional Interface to Built-in Operators
+    - [operator](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Algorithms/operator/operator.md) -- Functional Interface to Built-in Operators
     - [contextlib]() -- Context Manager Utilities
 * Dates and Times
     - [time](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Dates%20and%20Times/time/time.md) -- Clock Time
