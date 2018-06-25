@@ -47,8 +47,8 @@ PyMOTW-3 是[Doug Hellmann](https://doughellmann.com/blog/)写的一系列关于
 	- [io](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/The%20File%20System/io/io.md) -- Text, Binary, and Raw Stream I/O Tools
 * Data Persistence and Exchange
     - [pickle](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Persistence%20and%20Exchange/pickle/pickle.md) -- Object Serialization
-    - [shelve]() -- Persistent Storage of Objects
-    - [dbm]() -- Unix Key-Value Databases
+    - [shelve](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Persistence%20and%20Exchange/shelve/shelve.md) -- Persistent Storage of Objects
+    - [dbm](https://github.com/chenyang929/python3_module_of_the_week_zh/blob/master/Data%20Persistence%20and%20Exchange/dbm/dbm.md) -- Unix Key-Value Databases
     - [sqlite3]() -- Embedded Relational Database
     - [xml.etree.ElementTree]() -- XML Manipulation API
     - [csv]() -- Comma-separated Value Files
